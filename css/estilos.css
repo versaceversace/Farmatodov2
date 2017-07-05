@@ -1,0 +1,17 @@
+.slider {
+	margin-top: 2em;
+}
+
+
+.card {
+	display: inline-block;
+	width: 23%;
+	height: auto;
+	margin: 1px;
+}
+.btn-floating {
+	margin: 10px;
+}
+.login {
+	margin-top: 10em;
+}
