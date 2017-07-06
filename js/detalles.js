@@ -17,4 +17,17 @@
             }
         }
     })
+    $(".eliminar").click(function(e){
+        e.preventDefault();
+        var id=$(this).attr('data-id');
+        $(this).parentsUntil('.producto').remove();
+        $.post('./js/eliminar.php',{
+            Id:id
+        },function(a){
+            location.href="./carritodecompras.php";
+            //if(a=='0'){
+             //   location.href="./carritodecompras.php";
+            //}
+        });
+    });
   });

@@ -116,6 +116,9 @@
 						class="cantidad">
 						</span><br>
 
+						<span class="card-action"><a href="#!" class="eliminar" data-id="<?php
+						echo $datos[$i]['Id']?>">Eliminar</a></span>
+
 					</center>
 				</div>
 			<?php
