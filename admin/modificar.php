@@ -1,3 +1,11 @@
+<?php
+	session_start();
+	include "../conexion.php";
+	if(isset($_SESSION['Usuario'])){
+	}else{
+		header("Location: ./index.php?Error=Acceso denegado");
+	}
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -51,27 +59,38 @@
   <a href="#" data-activates="slide-out" class="button-collapse btn-floating btn-large waves-effect waves-light red"><i class="material-icons medium">menu</i></a>
         
 <div class="container">
-    <center><h1>Agregar un nuevo producto</h1></center>
-    <form action="altaproducto.php" method="post" enctype="multipart/form-data">
-        <fieldset>
-            <b>Nombre</b>
-            <input type="text" name="nombre">
-        </fieldset>
-        <fieldset>
-            <b>Descripción</b>
-            <input type="text" name="descripcion">
-        </fieldset>
-        <fieldset>
-            <b>Imagen</b><br>
-            <input type="file" name="file">
-        </fieldset>
-        <fieldset>
-            <b>Precio</b>
-            <input type="text" name="precio">
-        </fieldset><center>
-        <button class="btn waves-effect waves-light" type="submit" name="action"><input type="submit" name="accion" value="Enviar" class="aceptar">
-        </button></center>
-    </form>
+    
+		<h1>Modificar y/o Eliminar Productos</h1>
+		<table class="highlight" width="100%">
+			<tr>
+				<td>Id</td>
+				<td>Nombre</td>
+				<td>Descripcion</td>
+				<td>Precio</td>
+				<td>Eliminar</td>
+				<td>Modificar</td>
+			</tr>
+		<?php 
+			$resultado=mysql_query("select * from productos");
+			while($row=mysql_fetch_array($resultado)){
+				echo '
+				<tr>
+					<td>
+						<input type="hidden" value="'.$row[0].'">'.$row[0].'
+						<input type="hidden" class="imagen" value="'.$row[3].'">
+					</td>
+					<td><input type="text" class="nombre" value="'.$row[1].'"></td>
+					<td><input type="text" class="descripcion" value="'.$row[2].'"></td>
+					<td><input type="text" class="precio" value="'.$row[4].'"></td>
+					<td><button class="eliminar" data-id="'.$row[0].'">Eliminar</button></td>
+					<td><button class="modificar" data-id="'.$row[0].'">Modificar</button></td>
+				</tr>
+				';
+			}
+		?>
+	</table>
+	</section>
+
 </div>
 
 
@@ -85,6 +104,8 @@
        	      <!--Import jQuery before materialize.js-->
       <script type="text/javascript" src="../js/jquery-3.2.1.js"></script>
       <script type="text/javascript" src="../js/materialize.min.js"></script>
-	  <script type="text/javascript"  src="../js/scripts.js"></script>
+	  <script type="text/javascript"  src="../admin/modificar.js"></script>
+       <script type="text/javascript"  src="../js/scripts.js"></script>
+
 </body>
 </html>
