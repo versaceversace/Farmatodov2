@@ -33,7 +33,7 @@
       <a href="#!email"><span class="white-text email">aaronelf@gmail.com</span></a>
     </div></li>
     <li><a href="index.php"><i class="material-icons">home</i>Inicio</a></li>
-    <li><a href="#!">Agregar Productos</a></li>
+    <li><a href="admin/agregarproducto.php">Agregar Productos</a></li>
     <li><div class="divider"></div></li>
     <li><a class="subheader">Desconectar</a></li>
     <li><a class="waves-effect" href="./login/cerrar.php">Salir</a></li>
